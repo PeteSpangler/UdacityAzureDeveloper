@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Sign In</h1>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <div class="Jumbotron">
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+    </div>
+</form>
+<h2>OR</h2>
+<a href="{{ auth_url }}"><img src="{{url_for('static', filename='images/sign-in-with-ms.svg')}}" /></a>
+{% endblock %}
