@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FlaskWebProject"
   ],
-  "SelectedNode": "\\requirements.txt",
+  "SelectedNode": "\\FlaskWebProject\\views.py",
   "PreviewInSolutionExplorer": false
 }
