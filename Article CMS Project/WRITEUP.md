@@ -19,7 +19,9 @@ of the app's capability. It also would really benefit developers who have alread
 through App Service but could work through the VM workflow. It also allows for more fine-tuning, so the developer can customize
 the VM to optimize their CMS app.
 
-
+My Choice:
+I chose App Service because the CMS app is lightweight, does not require robust compute power, and is easy to deploy through Azure. The CMS
+App is straightforward and runs on a Python codebase, which is supported by App Service. Overall, a simple choice.
 
 ### Assess app changes that would change your decision.
 

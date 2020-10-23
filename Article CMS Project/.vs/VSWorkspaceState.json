@@ -1,8 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
+    "\\env\\Include",
     "\\FlaskWebProject"
   ],
-  "SelectedNode": "\\FlaskWebProject\\views.py",
   "PreviewInSolutionExplorer": false
 }
