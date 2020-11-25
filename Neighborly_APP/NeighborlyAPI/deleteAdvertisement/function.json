@@ -8,7 +8,8 @@
       "name": "req",
       "methods": [
         "delete"
-      ]
+      ],
+      "connection": "MyDbConnection"
     },
     {
       "type": "http",
