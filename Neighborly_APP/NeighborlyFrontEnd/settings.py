@@ -1,6 +1,6 @@
 #--------- Flask settings
-SERVER_HOST = 'https://neighbourlyapp.azurewebsites.net' # Update this for the appropriate front-end website when up
-SERVER_PORT = 5000
+SERVER_HOST = '0.0.0.0' # Update this for the appropriate front-end website when up
+SERVER_PORT = 8000
 FLASK_DEBUG = False # Do not use debug mode in prod
 
 # Flask-Restplus settings
