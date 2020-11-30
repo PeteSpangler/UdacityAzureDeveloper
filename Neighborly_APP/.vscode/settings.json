@@ -36,5 +36,7 @@
         "venv.bak{,/**}",
         ".vscode{,/**}"
     ],
-    "python.pythonPath": "C:\\Users\\dell\\Documents\\GitHub\\UdacityAzureDeveloper\\Neighborly_APP\\.venv\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\dell\\Documents\\GitHub\\UdacityAzureDeveloper\\Neighborly_APP\\.venv\\Scripts\\python.exe",
+    "appService.defaultWebAppToDeploy": "/subscriptions/bddcf2cc-3b4f-4639-a259-316da87fc452/resourceGroups/UDAzureProject2/providers/Microsoft.Web/sites/neighbourlywebapp",
+    "appService.deploySubpath": "NeighborlyFrontEnd"
 }
