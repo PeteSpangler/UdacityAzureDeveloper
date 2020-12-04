@@ -15,7 +15,7 @@ class BaseConfig:
     SERVICE_BUS_CONNECTION_STRING ='Endpoint=sb://udazmigrate.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=roxKSIyI4xhNtWAsIU39sbEU+kt2K3Wl1kOOWuc7qVY=' #TODO: Update value
     SERVICE_BUS_QUEUE_NAME ='notificationqueue'
     ADMIN_EMAIL_ADDRESS: 'info@techconf.com'
-    SENDGRID_API_KEY = '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' #Configuration not required, required SendGrid Account
+    SENDGRID_API_KEY = '' #Configuration not required, required SendGrid Account
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
