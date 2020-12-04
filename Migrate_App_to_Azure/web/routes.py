@@ -1,6 +1,6 @@
-from app import app, db, queue_client
+from . import app, db, queue_client
 from datetime import datetime
-from models import Attendee, Conference, Notification
+from . import Attendee, Conference, Notification
 from flask import render_template, session, request, redirect, url_for, flash, make_response, session
 from azure.servicebus import Message
 from sendgrid import SendGridAPIClient
