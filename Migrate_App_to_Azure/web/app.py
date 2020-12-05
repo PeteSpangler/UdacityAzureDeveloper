@@ -1,5 +1,5 @@
 import os
-import datetime
+from datetime import datetime
 from flask import Flask, render_template, url_for, request, redirect, flash, make_response, session
 from flask_sqlalchemy import SQLAlchemy 
 from azure.servicebus import QueueClient, Message
