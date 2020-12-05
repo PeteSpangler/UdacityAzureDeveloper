@@ -1,0 +1,12 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "notificationqueue",
+      "connection": "Endpoint=sb://udazmigrate.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=roxKSIyI4xhNtWAsIU39sbEU+kt2K3Wl1kOOWuc7qVY="
+    }
+  ]
+}
