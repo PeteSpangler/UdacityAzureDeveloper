@@ -18,8 +18,8 @@ class BaseConfig:
     SENDGRID_API_KEY = '' #Configuration not required, required SendGrid Account
 
 class DevelopmentConfig(BaseConfig):
-    DEBUG = True
+    DEBUG = False
 
 
 class ProductionConfig(BaseConfig):
-    DEBUG = False
+    DEBUG = True
