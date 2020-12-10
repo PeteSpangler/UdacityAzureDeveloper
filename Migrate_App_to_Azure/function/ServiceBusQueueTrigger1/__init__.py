@@ -23,17 +23,20 @@ def main(msg: func.ServiceBusMessage):
         cursor.execute("SELECT first_name, last_name, email FROM Attendee;")
         attendees = cursor.fetchall()
 
+        email_list = {}
         for attendee in attendees:
-            subject = '{}: {}'.format(attendee.first_name, notification_subject)
-            send_email(attendee.email, subject, notification_message)
+            subject = '{} {}: {}'.format({attendee[0]}, {attendee[1]}, notification_subject)
+            email = '{}: {} {}'.format({attendee[2]}, subject, notification_message)
+            email_list.update(email)
 
         notification_completed_date = datetime.utcnow()
-        notification_status = 'Notified {} attendees'.format(len(attendees))
+
+        notification_status = 'Notified {} attendees'.format(len(email_list))
         connection.commit()
         # TODO: Loop through each attendee and send an email with a personalized subject
 
         # TODO: Update the notification table by setting the completed date and updating the status with the total number of attendees notified
-        pass
+        
     except (Exception, psycopg2.DatabaseError) as error:
         logging.error(error)
         connection.rollback()
