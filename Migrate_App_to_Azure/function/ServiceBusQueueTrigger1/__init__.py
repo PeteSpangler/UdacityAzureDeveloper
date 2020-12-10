@@ -18,7 +18,7 @@ def main(msg: func.ServiceBusMessage):
     try:
         # TODO: Get notification message and subject from database using the notification_id
         notification_message = cursor.execute("SELECT message FROM Notification WHERE id=notification_id;")
-        notification_subject = cursor.execute("SELECT subject FROM Notification WHERE id=notification_id")
+        notification_subject = cursor.execute("SELECT subject FROM Notification WHERE id=notification_id;")
         # TODO: Get attendees email and name
         cursor.execute("SELECT first_name, last_name, email FROM Attendee;")
         attendees = cursor.fetchall()
