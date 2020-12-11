@@ -115,11 +115,15 @@ def notification():
         try:
             db.session.add(notification)
             db.session.commit()
-
+            
+            msg = Message(notification)
+            queue_client.send(msg)
+            """
             ##################################################
             ## TODO: Refactor This logic into an Azure Function
             ## Code below will be replaced by a message queue
             #################################################
+            
             attendees = Attendee.query.all()
 
             for attendee in attendees:
@@ -134,7 +138,7 @@ def notification():
             #################################################
             ## END of TODO
             #################################################
-
+            """
             return redirect('/Notifications')
         except :
             logging.error('log unable to save notification')
