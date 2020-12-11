@@ -116,7 +116,7 @@ def notification():
             db.session.add(notification)
             db.session.commit()
             
-            msg = Message(notification)
+            msg = Message(b'{"MessageName": "notification.subject", "messageText": "notification.message"}')
             queue_client.send(msg)
             """
             ##################################################
