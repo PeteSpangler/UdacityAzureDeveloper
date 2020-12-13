@@ -114,10 +114,11 @@ def notification():
 
         try:
             db.session.add(notification)
-            db.session.commit()
-            
             msg = Message(b'{"MessageName": "notification.subject", "messageText": "notification.message"}')
             queue_client.send(msg)
+            
+            db.session.commit()
+                      
             """
             ##################################################
             ## TODO: Refactor This logic into an Azure Function
