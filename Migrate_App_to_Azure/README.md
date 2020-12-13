@@ -61,11 +61,16 @@ You will need to install the following locally:
 ## Monthly Cost Analysis
 Complete a month cost analysis of each Azure resource to give an estimate total cost using the table below:
 
-| Azure Resource | Service Tier | Monthly Cost |
-| ------------ | ------------ | ------------ |
-| *Azure Postgres Database* |     |              |
-| *Azure Service Bus*   |         |              |
-| ...                   |         |              |
+| Azure Resource   | Service Tier | Monthly Cost |
+| ---------------- | ------------ | -------------- |
+| Azure PostgreSQL |   Basic      |   $43.55       |
+| Azure Service Bus|   Basic      |   $0.01        |
+| Azure App Service|   Basic (B1) |   $21.12       |
+| Azure Storage    |   Basic      |   $0.10        |
+
+The app service includes the web app and the function app.
 
 ## Architecture Explanation
-This is a placeholder section where you can provide an explanation and reasoning for your architecture selection for both the Azure Web App and Azure Function.
+The azure web app was already built out, I only had to change the environment variables within config.py and refactor the notification flow within app.py. Everything else was already configured. The costs are reasonable, outside of the PostgreSQL database, which is by far the most expensive part of the architecture. Creating a service bus namespace to handle the notifications is a good idea, but if it could all be saved to a less expensive database that would be the most straightforward way to lower costs. 
+
+Other than changing up the database, everthing else is available at a reasonable cost.
