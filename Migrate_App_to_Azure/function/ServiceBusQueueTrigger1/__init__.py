@@ -17,26 +17,26 @@ def main(msg: func.ServiceBusMessage):
     cursor = connection.cursor()
     try:
         # TODO: Get notification message and subject from database using the notification_id
-        notification_query = cursor.execut("SELECT message, subject FROM notification WHERE id = {}".format(notification_id))
+        notification_query = cursor.execute("SELECT message, subject FROM notification WHERE id = {}".format(notification_id))
 
         # TODO: Get attendees email and name
-        cursor.execute("SELECT first_name, last_name, email FROM Attendee;")
+        cursor.execute("SELECT first_name, last_name, email FROM attendee;")
         attendees = cursor.fetchall()
 
         email_list = {}
         for attendee in attendees:
-            subject = '{} {}: {}'.format({attendee[0]}, {attendee[1]}, notification_subject)
-            email = '{}: {} {}'.format({attendee[2]}, subject, notification_message)
-            email_list.update(email)
+            Mail('{}, {}, {}'.format({'admin@techconf.com'}, {attendee[2]}, {notification_query}))
+            email_list.update(attendee)
 
         notification_completed_date = datetime.utcnow()
 
         notification_status = 'Notified {} attendees'.format(len(email_list))
-        connection.commit()
+        
         # TODO: Loop through each attendee and send an email with a personalized subject
 
         # TODO: Update the notification table by setting the completed date and updating the status with the total number of attendees notified
         update_query = cursor.execute("UPDATE notification SET status = '{}', completed_date = '{}' where id = {}".format(notification_status, notification_completed_date, notification_id))
+        connection.commit()
 
     except (Exception, psycopg2.DatabaseError) as error:
         logging.error(error)
