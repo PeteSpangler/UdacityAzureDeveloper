@@ -113,13 +113,17 @@ def notification():
         notification.submitted_date = datetime.utcnow()
 
         try:
-            db.session.add(notification)
-            msg = Message(b'{"MessageName": "notification.subject", "messageText": "notification.message"}')
-            queue_client.send(msg)
-            
+            db.session.add(notification)        
             db.session.commit()
-                      
+
+            notification_id = notification.id
+
+            msg = Message(str(notification_id))
+            queue_client.send(msg)          
+            
             """
+used the following blog post to learn how to send messages to service bus queue:
+https://devblogs.microsoft.com/premier-developer/manage-service-bus-queue-messages-with-python/
             ##################################################
             ## TODO: Refactor This logic into an Azure Function
             ## Code below will be replaced by a message queue

@@ -17,8 +17,8 @@ def main(msg: func.ServiceBusMessage):
     cursor = connection.cursor()
     try:
         # TODO: Get notification message and subject from database using the notification_id
-        notification_message = cursor.execute("SELECT message FROM Notification WHERE id=notification_id;")
-        notification_subject = cursor.execute("SELECT subject FROM Notification WHERE id=notification_id;")
+        notification_query = cursor.execut("SELECT message, subject FROM notification WHERE id = {}".format(notification_id))
+
         # TODO: Get attendees email and name
         cursor.execute("SELECT first_name, last_name, email FROM Attendee;")
         attendees = cursor.fetchall()
@@ -36,7 +36,8 @@ def main(msg: func.ServiceBusMessage):
         # TODO: Loop through each attendee and send an email with a personalized subject
 
         # TODO: Update the notification table by setting the completed date and updating the status with the total number of attendees notified
-        
+        update_query = cursor.execute("UPDATE notification SET status = '{}', completed_date = '{}' where id = {}".format(notification_status, notification_completed_date, notification_id))
+
     except (Exception, psycopg2.DatabaseError) as error:
         logging.error(error)
         connection.rollback()
