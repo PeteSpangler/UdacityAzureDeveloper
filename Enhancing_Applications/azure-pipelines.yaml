@@ -1,0 +1,51 @@
+
+name: Azure Pipelines
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    pool:
+      name: Hosted Ubuntu 1604
+    steps:
+    - task: ArchiveFiles@2
+      displayName: 'Archive Azure Vote'
+      inputs:
+        rootFolderOrFile: 'azure-vote'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-azurevote.zip'
+    - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-azurevote.zip
+      displayName: 'Upload Package'
+      artifact: drop-azurevote
+- stage:
+  jobs:
+  - deployment: VMDeploy
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    displayName: Deploy to VMSS
+    environment:
+      name: ACDND-C4-Project
+      resourceType: VirtualMachine
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: |
+                #! /bin/bash
+
+                pip3 install redis
+                pip3 install opencensus-ext-azure
+                pip3 install flask
+                pip3 install opencensus-ext-flask
+
+                cd ~/
+                DIR=/home/udacityadmin/app
+                if [ ! -d "$DIR" ]; then
+                    mkdir app
+                fi
+                mv /home/udacityadmin/azagent/_work/1/drop-azurevote/$(Build.BuildId)-azurevote.zip app
+                cd app
+                unzip -o $(Build.BuildId)-azurevote.zip
