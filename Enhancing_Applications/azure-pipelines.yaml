@@ -1,6 +1,6 @@
 
 name: Azure Pipelines
-stages:
+stages: 
 - stage: Build
   jobs:
   - job: Build
